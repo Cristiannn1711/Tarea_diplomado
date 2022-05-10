@@ -21,6 +21,7 @@ library(ggplot2)
 library(psych)
 
 ```
+
 ## Tipo de datos 
 Datos a analizar a partir de un TXT, las que corresponden a las piezas con destino a filete, a continuación se observa que tipo de variables se analizaran y su caracteristica.
 ```{r medidas resumen datos}
@@ -41,21 +42,24 @@ ecdf(datos$Peso)  #Distribución empírica acumulada de la variable weight.
 plot(ecdf(datos$Largo))
 
 ```
+
 ## Identifica si los datos están balanceados o no entre tratamientos usando tablas de frecuencia
 ```{r histogramas de frecuencia}
 hist(datos$Largo)
 hist(datos$Peso)
 ```
+
 ## Establece relación entre variables cuantitativas y factores usando gráficas de correlación, boxplot, interacción o de tamaño de los efectos 
 Como se puede observar en los siguientes graficos de cajas , entre calidad peso y calibres, peso, los datos obtenidos para este lote no presentan una desviacion significativa.
+Se puede apreciar que los largos de las piezas para calidad Industrial B, no fueron medidas.
 ```{r Boxplot calidad peso}
 ggplot(datos, aes(x=Calidad, y=Peso, fill = Calidad)) +geom_boxplot()+labs(title="Boxplot", x="Calidad", y="Peso (Kg)")
 ggplot(datos, aes(x=Calibre, y=Peso, fill = Calibre)) +geom_boxplot()+labs(title="Boxplot", x="Calibre", y="Peso (Kg)")
 ggplot(datos, aes(x=Calidad, y=Largo, fill = Calidad)) +geom_boxplot()+labs(title="Boxplot", x="Calidad", y="Largo (Mts)")
 ggplot(datos, aes(x=Calibre, y=Largo, fill = Calibre)) +geom_boxplot()+labs(title="Boxplot", x="Calibre", y="Largo (Mts)")
 ```
-##
-Identifica si existen errores, datos faltantes o valores atípicos
+
+## Identifica si existen errores, datos faltantes o valores atípicos
 ```{r Errores de tablas}
 
 summary(datos)
