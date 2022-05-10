@@ -1,0 +1,23 @@
+---
+title: "Clasificación de Salmón del Atlantico con destino a filete"
+author: "Cristian Naguian Asenjo"
+date: "`r format(Sys.time(), '%d %B %Y')`"
+subtitle: "Diplomado de Análisis de datos con R para la Acuicultura"
+output: 
+  pdf_document: default
+  html_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+ # En este bloque de código podrían ir todos los paquetes que necesite
+
+library(xlsx)
+library(readr)
+library(readxl)
+library(Rlab)
+library(MASS)
+library(ggplot2)
+library(psych)
+
+```
