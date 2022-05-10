@@ -1,5 +1,5 @@
 ---
-title: "Clasificación de Salmón del Atlantico con destino a filete"
+title: "Clasificación de Salmón del Atlantico destinado a filete"
 author: "Cristian Naguian Asenjo"
 date: "`r format(Sys.time(), '%d %B %Y')`"
 subtitle: "Diplomado de Análisis de datos con R para la Acuicultura"
@@ -64,5 +64,5 @@ table(datos$Calibre)
 mean(datos$Peso)
 ```
 Se cuantifica un total de 10898 piezas premium, 557 categoria Standard y 71 piezas como industrial B.
-En tanto para los calibres se observa que 5328 piezas corresponden a calibre 4.5-5.5 Kg. Y por ultimo el peso promedio de este lote fue de 5.068799 Kg.
+En tanto para los calibres se observa que 5328 piezas corresponden a calibre 4.5-5.5 Kg. Y por ultimo el peso promedio de este lote fue de 5.068799 Kg.f
 ```
