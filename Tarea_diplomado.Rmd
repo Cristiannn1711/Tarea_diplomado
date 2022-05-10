@@ -21,15 +21,18 @@ library(ggplot2)
 library(psych)
 
 ```
-## Medidas de resumen).
+## Tipo de datos 
+Datos a analizar a partir de un TXT, las que corresponden a las piezas con destino a filete, a continuación se observa que tipo de variables se analizaran y su caracteristica.
 ```{r medidas resumen datos}
-set.seed(1) #semilla para fijar resultados cada vez que se corre la simulación
+set.seed(1) 
 datos <- read.delim("/cloud/project/Piezas a filete.txt", na="NA")
 str(datos)
 ```
-```
 ## Describe la variación de las variables de estudio usando histogramas
+A continuación se observa dos histogramas para peso y largo, a partir de grafico con 30 barras de distribución, despues tenemos un gráfico de densidad el cual visualiza la distribución de datos cuantitativos para el peso en un intervalo o período de tiempo continuo.
+Los graficos de distribucion empirica acumulada se puede concluir que presentan una distribucion de tipo normal. (Largo y peso)
 ```{r hist Largo / Peso}
+
 ggplot(datos, aes(x = Peso)) +geom_histogram(bins = 30, color = "blue", fill="green")
 ggplot(datos, aes(x = Largo)) +geom_histogram(bins = 30, color = "black", fill="yellow")
 plot(density(datos$Peso))
@@ -43,26 +46,30 @@ plot(ecdf(datos$Largo))
 hist(datos$Largo)
 hist(datos$Peso)
 ```
-##   
-Establece relación entre variables cuantitativas y factores usando gráficas de correlación, boxplot, interacción o de tamaño de los efectos 
+## Establece relación entre variables cuantitativas y factores usando gráficas de correlación, boxplot, interacción o de tamaño de los efectos 
+Como se puede observar en los siguientes graficos de cajas , entre calidad peso y calibres, peso, los datos obtenidos para este lote no presentan una desviacion significativa.
 ```{r Boxplot calidad peso}
 ggplot(datos, aes(x=Calidad, y=Peso, fill = Calidad)) +geom_boxplot()+labs(title="Boxplot", x="Calidad", y="Peso (Kg)")
+ggplot(datos, aes(x=Calibre, y=Peso, fill = Calibre)) +geom_boxplot()+labs(title="Boxplot", x="Calibre", y="Peso (Kg)")
 ```
 ##
 Identifica si existen errores, datos faltantes o valores atípicos
 ```{r Errores de tablas}
+
 summary(datos)
 ```
 ##
-Como se puede observar en el resumen de datos, existen 1156 datos de largo los cuales no estan ingresados, debido a que la grader, maquina que calibra las piezas no pude detectar su longitud.
+Como se puede observar en el resumen de datos, existen 1156 datos de largo los cuales no estan ingresados, debido a que la grader, máquina que calibra las piezas no pudo detectar su longitud.
 
 
 ##  Resume los datos usando tablas y estadística descriptiva
 ```{r Tablas}
+
 table(datos$Calidad)
 table(datos$Calibre)
 mean(datos$Peso)
+mean(datos$lar)
 ```
 Se cuantifica un total de 10898 piezas premium, 557 categoria Standard y 71 piezas como industrial B.
-En tanto para los calibres se observa que 5328 piezas corresponden a calibre 4.5-5.5 Kg. Y por ultimo el peso promedio de este lote fue de 5.068799 Kg.f
+En tanto para los calibres se observa que 5328 piezas corresponden a calibre 4.5-5.5 Kg. Y por último el peso promedio de este lote fue de 5.068799 Kg.f
 ```
