@@ -61,7 +61,8 @@ ggplot(datos, aes(x=Calibre, y=Largo, fill = Calibre)) +geom_boxplot()+labs(titl
 
 ## Identifica si existen errores, datos faltantes o valores atípicos
 ```{r Errores de tablas}
-
+datos$Calibre <- as.factor(datos$Calibre)
+datos$Calidad <- as.factor(datos$Calidad)
 summary(datos)
 ```
 ##

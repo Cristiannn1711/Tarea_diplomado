@@ -443,22 +443,24 @@ de las piezas para calidad Industrial B, no fueron medidas.</p>
 <div id="identifica-si-existen-errores-datos-faltantes-o-valores-atípicos" class="section level2">
 <h2>Identifica si existen errores, datos faltantes o valores
 atípicos</h2>
-<pre class="r"><code>summary(datos)</code></pre>
-<pre><code>##      Pieza            Peso           Largo          Calibre         
-##  Min.   :    1   Min.   :2.045   Min.   :0.2032   Length:11526      
-##  1st Qu.: 2882   1st Qu.:4.495   1st Qu.:0.6604   Class :character  
-##  Median : 5764   Median :5.010   Median :0.6858   Mode  :character  
-##  Mean   : 5764   Mean   :5.069   Mean   :0.6769                     
-##  3rd Qu.: 8645   3rd Qu.:5.515   3rd Qu.:0.7112                     
-##  Max.   :11526   Max.   :8.000   Max.   :0.8890                     
-##                                  NA&#39;s   :1165                       
-##    Calidad         
-##  Length:11526      
-##  Class :character  
-##  Mode  :character  
-##                    
-##                    
-##                    
+<pre class="r"><code>datos$Calibre &lt;- as.factor(datos$Calibre)
+datos$Calidad &lt;- as.factor(datos$Calidad)
+summary(datos)</code></pre>
+<pre><code>##      Pieza            Peso           Largo              Calibre    
+##  Min.   :    1   Min.   :2.045   Min.   :0.2032   4.5-5.5 Kg:5382  
+##  1st Qu.: 2882   1st Qu.:4.495   1st Qu.:0.6604   4.0-4.5 Kg:1637  
+##  Median : 5764   Median :5.010   Median :0.6858   6-7 Kg    :1322  
+##  Mean   : 5764   Mean   :5.069   Mean   :0.6769   3-4 Kg    : 805  
+##  3rd Qu.: 8645   3rd Qu.:5.515   3rd Qu.:0.7112   5.5-6.3 Kg: 703  
+##  Max.   :11526   Max.   :8.000   Max.   :0.8890   4.2-7.0 Kg: 523  
+##                                  NA&#39;s   :1165     (Other)   :1154  
+##          Calidad     
+##  Industrial B:   71  
+##  Premium     :10898  
+##  Standard    :  557  
+##                      
+##                      
+##                      
 ## </code></pre>
 </div>
 <div id="section" class="section level2">
