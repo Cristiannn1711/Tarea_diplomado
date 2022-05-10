@@ -51,6 +51,8 @@ Como se puede observar en los siguientes graficos de cajas , entre calidad peso 
 ```{r Boxplot calidad peso}
 ggplot(datos, aes(x=Calidad, y=Peso, fill = Calidad)) +geom_boxplot()+labs(title="Boxplot", x="Calidad", y="Peso (Kg)")
 ggplot(datos, aes(x=Calibre, y=Peso, fill = Calibre)) +geom_boxplot()+labs(title="Boxplot", x="Calibre", y="Peso (Kg)")
+ggplot(datos, aes(x=Calidad, y=Largo, fill = Calidad)) +geom_boxplot()+labs(title="Boxplot", x="Calidad", y="Largo (Mts)")
+ggplot(datos, aes(x=Calibre, y=Largo, fill = Calibre)) +geom_boxplot()+labs(title="Boxplot", x="Calibre", y="Largo (Mts)")
 ```
 ##
 Identifica si existen errores, datos faltantes o valores atípicos
@@ -68,7 +70,7 @@ Como se puede observar en el resumen de datos, existen 1156 datos de largo los c
 table(datos$Calidad)
 table(datos$Calibre)
 mean(datos$Peso)
-mean(datos$lar)
+mean(datos$Largo)
 ```
 Se cuantifica un total de 10898 piezas premium, 557 categoria Standard y 71 piezas como industrial B.
 En tanto para los calibres se observa que 5328 piezas corresponden a calibre 4.5-5.5 Kg. Y por último el peso promedio de este lote fue de 5.068799 Kg.f
