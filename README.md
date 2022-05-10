@@ -1,11 +1,11 @@
 # Título del trabajo
-Clasificación de Salmón del Atlantico con destino a filete
+Clasificación de Salmón del Atlántico destinado a filete
 ## Autor
 Cristian Naguian Asenjo 
 
 ## Descripción del problema a resolver
 
-Análisis de clasificación de piezas destinadas a filetes respecto a su calidad y calibre.
+Análisis de clasificación de piezas destinadas a filetes de acuerdo con su calidad y calibre
 
 ## Descripción de las variables de estudio, los factores que se desean analizar y el número total de observaciones.
 
