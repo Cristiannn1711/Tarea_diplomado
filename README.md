@@ -1,7 +1,9 @@
 # Título del trabajo.
-Analisis de clasificación de Salmón del Atlantico con destino a filete.
+Análisis de clasificación de Salmón del Atlantico con destino a filete.
 
 ## Autor.
 Cristian Naguian Asenjo
 
 ## Descripción del problema a resolver.
+
+
