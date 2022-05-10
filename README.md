@@ -1,7 +1,7 @@
 # Título del trabajo
 Clasificación de Salmón del Atlantico con destino a filete
 ## Autor
-Cristian Naguian Asenjo AA
+Cristian Naguian Asenjo 
 
 ## Descripción del problema a resolver
 
