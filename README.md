@@ -1,6 +1,5 @@
 # Título del trabajo
-Clasificación de Salmón del Atlantico destinadas a filetes
-
+Clasificación de Salmón del Atlantico con destino a filete
 ## Autor
 Cristian Naguian Asenjo
 
