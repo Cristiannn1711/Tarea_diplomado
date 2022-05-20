@@ -33,6 +33,8 @@ Los graficos de distribucion empirica acumulada se puede concluir que presentan 
 ```{r hist Largo / Peso}
 ggplot(datos, aes(x = Peso)) +geom_histogram(bins = 30, color = "indianred", fill="lightblue")
 ggplot(datos, aes(x = Largo)) +geom_histogram(bins = 30, color = "black", fill="salmon1")
+ggplot(datos, aes(x = Peso)) +geom_histogram(bins = 30, color = "blue", fill="green")
+ggplot(datos, aes(x = Largo)) +geom_histogram(bins = 30, color = "black", fill="yellow")
 plot(density(datos$Peso))
 plot(ecdf(datos$Peso))
 ecdf(datos$Peso)  #Distribución empírica acumulada de la variable weight.
