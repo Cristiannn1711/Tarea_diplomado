@@ -18,6 +18,11 @@ library(Rlab)
 library(MASS)
 library(ggplot2)
 library(psych)
+library(car)
+library(lmtest)
+library(dplyr)
+library(knitr)
+library(gridExtra)
 ```
 
 ## Tipo de datos 
@@ -75,13 +80,21 @@ sd(datos$Peso)
 ```
 Se cuantifica un total de 10898 piezas premium, 557 categoria Standard y 71 piezas como industrial B.
 En tanto para los calibres se observa que 5328 piezas corresponden a calibre 4.5-5.5 Kg. Y por último el peso promedio de este lote fue de 5.068799 Kg.f
-## Propone hipótesis y realiza análisis estadístico de los datos, incluye evaluación de supuestos.
+
+# Propone hipótesis y realiza análisis estadístico de los datos, incluye evaluación de supuestos.
 ## Modelo lineal del análisis de varianza de dos vías con interacción.
 
 ```{r, Modelo_lineal}
 lm.aov1 <- lm(Peso ~ Calidad, data = datos)
 aov(lm.aov1)
 ```
-
-
-
+## Evaluación de supuestos mediante métodos basados en análisis de residuales y pruebas de hipótesis.
+```{r, Supuestos}
+plot(lm.aov1$residuals, pch=20, col = "blue")
+```
+## Durbin-Watson Test
+```{r, dwtest}
+dwtest(Peso ~ Calidad, data = datos,
+       alternative = c("two.sided"), 
+       iterations = 15)
+```
