@@ -3,9 +3,9 @@ title: "Clasificación de Salmón del Atlantico destinado a filete"
 author: "Cristian Naguian Asenjo"
 date: "`r format(Sys.time(), '%d %B %Y')`"
 output:
-  html_document: default
-  word_document: default
   pdf_document: default
+  word_document: default
+  html_document: default
 subtitle: Diplomado de Análisis de datos con R para la Acuicultura
 ---
 
@@ -121,3 +121,32 @@ hist(x= aov_residuals, main = "Histograma de residuales")
 
 #Se realizaron los gráficos y las pruebas para cada uno de los supuestos. Los resultados de las pruebas mostraron que se cumplían los tres supuestos (independencia, homogeneidad de varianzas y normalidad); ya que éstas pruebas presentaron p-valores superiores al nivel de significación del 5%. Debido al cumplimiento de los tres supuestos, se concluye que para este experimento es posible realizar el análisis de varianza.
 
+## Formule la hipótesis nula y alternativa para evaluar :  El peso de salmón es igual para las tres tipos de calidades.
+
+#**H~0~**: $$\mu_{Premium} = \mu_{Standard} = \mu_{Industrail B}$$
+
+#**H~1~**: Al menos una de las medias de pesos es diferente para cada calidad.
+
+```{r, Explore}
+head(datos)
+str(datos)
+summary(datos)
+```
+#Análisis exploratorio de datos de la variable bajo estudio Peso, se utilizo geom:histogram() y Geom_boxplot()
+```{r, Exploratorio}
+plot1 <- datos %>%
+          ggplot(aes(x= Peso))+
+                geom_histogram(color="white", fill="black", position = "identity", bins = 15)+
+                theme(legend.position="none")+
+                labs(x="Peso",title="Distribución Peso")
+
+
+plot2 <- datos %>%
+          ggplot(aes(x= Calidad,y=Peso,fill=Calidad))+
+                geom_boxplot()+
+                theme(legend.position="none")+
+                labs(x="Calidad",y="Peso",title="Boxplot Peso por calidad")
+
+grid.arrange(plot1, plot2, ncol=2, nrow =1)
+```
+#Incluya una tabla con los estimadores puntuales de los promedios y las varianzas de la variable Final_Weight_g para cada nivel del factor Cepa, incluya tambien el N muestral. Use el paquete dplyr y los comandos group_by(), summarise().
