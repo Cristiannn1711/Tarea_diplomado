@@ -24,6 +24,7 @@ library(lmtest)
 library(dplyr)
 library(knitr)
 library(gridExtra)
+library(pander)
 ```
 
 ## Tipo de datos 
@@ -149,4 +150,19 @@ plot2 <- datos %>%
 
 grid.arrange(plot1, plot2, ncol=2, nrow =1)
 ```
-#Incluya una tabla con los estimadores puntuales de los promedios y las varianzas de la variable Final_Weight_g para cada nivel del factor Cepa, incluya tambien el N muestral. Use el paquete dplyr y los comandos group_by(), summarise().
+#Tabla con los estimadores puntuales de los promedios y las varianzas de la variable Peso para cada calidad.
+```{r, estimadores}
+Tabla = datos %>% group_by(Calidad) %>%
+summarize(N= n(), Mean = mean(Peso),
+          Variance= var(Peso))
+
+
+knitr::kable(Tabla,caption ="Estimadores puntuales de media y varianza de Peso para las Calidaddes, Premium. Standard e Industrial B")
+```
+#Variable respuesta Peso y como factor de clasificación Calidad.
+```{r, varrespuesta}
+model1_anova1 <- lm(Peso ~ Calidad, data=datos)
+anova(model1_anova1)
+pander::pander(model1_anova1, caption = "ANOVA a una vía de clasificación.")
+```
+#El efecto Calidad es estadísticamente significativo (p valor menor al nivel de significación del 5%). En consecuencia se rechaza la hipótesis nula. Por lo tanto, existen diferencias entre los pesos promedios de las distintas calidades.
