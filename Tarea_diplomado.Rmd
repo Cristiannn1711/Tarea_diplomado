@@ -2,10 +2,11 @@
 title: "Clasificación de Salmón del Atlantico destinado a filete"
 author: "Cristian Naguian Asenjo"
 date: "`r format(Sys.time(), '%d %B %Y')`"
-subtitle: "Diplomado de Análisis de datos con R para la Acuicultura"
-output: 
+output:
   html_document: default
+  word_document: default
   pdf_document: default
+subtitle: Diplomado de Análisis de datos con R para la Acuicultura
 ---
 
 ```{r setup, include=FALSE}
@@ -98,3 +99,25 @@ dwtest(Peso ~ Calidad, data = datos,
        alternative = c("two.sided"), 
        iterations = 15)
 ```
+## Homogeneidad de varianzas
+```{r, varianzas}
+plot(lm.aov1, 1, pch=20, col = "blue")
+```
+```{r, levenetest}
+leveneTest(Peso ~ Calidad, data = datos,
+           center = "median")
+```
+```{r, normalidad}
+plot(lm.aov1, 2, pch=20, col = "blue")
+qqPlot(lm.aov1)
+aov_residuals <- residuals(object = lm.aov1)
+```
+
+## Histograma de residuales
+```{r, hist_residuales}
+aov_residuals <- residuals(object = lm.aov1)
+hist(x= aov_residuals, main = "Histograma de residuales")
+```
+
+#Se realizaron los gráficos y las pruebas para cada uno de los supuestos. Los resultados de las pruebas mostraron que se cumplían los tres supuestos (independencia, homogeneidad de varianzas y normalidad); ya que éstas pruebas presentaron p-valores superiores al nivel de significación del 5%. Debido al cumplimiento de los tres supuestos, se concluye que para este experimento es posible realizar el análisis de varianza.
+
