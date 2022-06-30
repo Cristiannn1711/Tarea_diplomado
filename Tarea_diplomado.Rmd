@@ -28,6 +28,7 @@ datos <- read.delim("/cloud/project/Piezas a filete.txt", na="NA")
 str(datos)
 ```
 ## Describe la variación de las variables de estudio usando histogramas
+##holaaaa probando
 A continuación se observa dos histogramas para peso y largo, a partir de grafico con 30 barras de distribución, despues tenemos un gráfico de densidad el cual visualiza la distribución de datos cuantitativos para el peso en un intervalo o período de tiempo continuo.
 Los graficos de distribucion empirica acumulada se puede concluir que presentan una distribucion de tipo normal. (Largo y peso)
 ```{r hist Largo / Peso}
