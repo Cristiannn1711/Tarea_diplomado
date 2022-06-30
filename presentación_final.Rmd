@@ -1,0 +1,104 @@
+---
+title: "Presentación Final"
+author: "Cristian Naguian Asenjo"
+date: "`r format(Sys.time(), '%d %B %Y')`"
+output:
+  beamer_presentation:
+    theme: Malmoe
+    colortheme: seahorse
+    fonttheme: professionalfonts
+  ioslides_presentation: default
+  slidy_presentation: default
+  urlcolor: blue
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+library(xlsx)
+library(readr)
+library(readxl)
+library(Rlab)
+library(MASS)
+library(ggplot2)
+library(psych)
+library(car)
+library(lmtest)
+library(dplyr)
+library(knitr)
+library(gridExtra)
+library(pander)
+set.seed(1) 
+datos <- read.delim("/cloud/project/Piezas a filete.txt", na="NA")
+str(datos)
+```
+
+## Analisis comparativo de peces Peso y Calidad 
+
+**1).** **Descripción**
+
+
+**2).** **Métodos Estadísticos**
+
+
+**3).** **Hipotesis**
+
+
+**4).** **Resultados**
+
+
+**5).** **Conclusiones**
+
+## Descripción
+
+Las variables a estudiar serán peso y largo de un salmón, los factores a analizar son su clasificación, la cual corresponde a calibre y calidad, el número total de observaciones son el total de piezas 11526 enviadas a filete desde area de faenamiento correspondientes a un turno y lote
+
+Se realizaron los gráficos y las pruebas para cada uno de los supuestos. Los resultados de las pruebas mostraron que se cumplían los tres supuestos (independencia, homogeneidad de varianzas y normalidad); ya que éstas pruebas presentaron p-valores superiores al nivel de significación del 5%. Debido al cumplimiento de los tres supuestos, se concluye que para este experimento es posible realizar el análisis de varianza.
+
+El efecto Calidad es estadísticamente significativo (p valor menor al nivel de significación del 5%). En consecuencia se rechaza la hipótesis nula. Por lo tanto, existen diferencias entre los pesos promedios de las distintas calidades.
+
+## Métodos Estadísticos
+
+Se realizaron los gráficos y las pruebas para cada uno de los supuestos. Los resultados de las pruebas mostraron que se cumplían los tres supuestos (independencia, homogeneidad de varianzas y normalidad); ya que éstas pruebas presentaron p-valores superiores al nivel de significación del 5%. Debido al cumplimiento de los tres supuestos, se concluye que para este experimento es posible realizar el análisis de varianza.
+
+## Hipotesis por Calidad
+
+Hipótesis nula y alternativa para evaluar :  El peso de salmón es igual para las tres tipos de calidades.
+
+H~0~**: $$\mu_{Premium} = \mu_{Standard} = \mu_{Industrail B}$$
+
+H~1~**: Al menos una de las medias de pesos es diferente para cada calidad.
+
+N = 11526 piezas correspondientes a un turno de proceso
+
+## Boxplot para categoría Calidad
+
+```{r, echo=FALSE,message = FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+plot2 <- datos %>%
+          ggplot(aes(x= Calidad,y=Peso,fill=Calidad))+
+                geom_boxplot()+
+                theme(legend.position="none")+
+                labs(x="Calidad",y="Peso",title="Boxplot Peso por calidad")
+```
+
+##Tabla con los estimadores puntuales de los promedios y las varianzas de la variable Peso para cada calidad.
+
+```{r, echo=FALSE,message = FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+Tabla = datos %>% group_by(Calidad) %>%
+summarize(N= n(), Mean = mean(Peso),
+          Variance= var(Peso))
+
+
+knitr::kable(Tabla,caption ="Estimadores puntuales de media y varianza de Peso para las Calidaddes, Premium. Standard e Industrial B")
+```
+#Variable respuesta Peso y como factor de clasificación Calidad.
+```{r, echo=FALSE,message = FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+model1_anova1 <- lm(Peso ~ Calidad, data=datos)
+anova(model1_anova1)
+pander::pander(model1_anova1, caption = "ANOVA a una vía de clasificación.")
+```
+## Conclusión
+
+El efecto Calidad es estadísticamente significativo (p valor menor al nivel de significación del 5%). En consecuencia se rechaza la hipótesis nula. Por lo tanto, existen diferencias entre los pesos promedios de las distintas calidades.
