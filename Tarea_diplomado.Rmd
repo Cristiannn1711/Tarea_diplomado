@@ -4,8 +4,8 @@ author: "Cristian Naguian Asenjo"
 date: "`r format(Sys.time(), '%d %B %Y')`"
 subtitle: "Diplomado de Análisis de datos con R para la Acuicultura"
 output: 
-  html_document: default
   pdf_document: default
+  html_document: default
 ---
 
 ```{r setup, include=FALSE}
